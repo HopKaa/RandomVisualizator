@@ -10,7 +10,7 @@ public class FigureController : MonoBehaviour
     private void Start()
     {
         // Задаем случайное время жизни
-        lifeTime = Random.Range(2f, 5f);
+        lifeTime = Random.Range(1f, 2f);
         // Инициализируем таймер
         timer = lifeTime;
     }

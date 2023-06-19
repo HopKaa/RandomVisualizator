@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Shape : MonoBehaviour
 {
+    [SerializeField] private Font timerFont;
+
     public enum ShapeType { Circle, Square, Triangle };
     public ShapeType shapeType;
     public float lifeTime;
@@ -19,7 +21,7 @@ public class Shape : MonoBehaviour
         timerObject.transform.parent = transform;
         timerObject.transform.localPosition = new Vector3(0, 0, -0.1f);
         timerText = timerObject.AddComponent<Text>();
-        timerText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        timerText.font = timerFont;
         timerText.fontSize = 20;
         timerText.alignment = TextAnchor.MiddleCenter;
         timerText.color = Color.white;

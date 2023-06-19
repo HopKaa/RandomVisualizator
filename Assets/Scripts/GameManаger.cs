@@ -96,8 +96,8 @@ public class GameManager : MonoBehaviour
     private void CreateShape()
     {
         float life = Random.Range(minLifeTime, maxLifeTime);
-        float x = Random.Range(-field.transform.localScale.x / 14, field.transform.localScale.x / 14);
-        float y = Random.Range(-field.transform.localScale.y / 14, field.transform.localScale.y / 14);
+        float x = Random.Range(-field.transform.localScale.x / 800, field.transform.localScale.x / 800);
+        float y = Random.Range(-field.transform.localScale.y / 800, field.transform.localScale.y / 800);
             
         GameObject shapeObject = Instantiate(GetRandomFigurePrefab(), field.transform);
         shapeObject.transform.localPosition = new Vector3(x, y, 0);

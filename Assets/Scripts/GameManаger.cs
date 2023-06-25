@@ -5,18 +5,17 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject field;
-    public GameObject circlePrefab;
-    public GameObject squarePrefab;
-    public GameObject trianglePrefab;
-    public Toggle circleToggle;
-    public Toggle squareToggle;
-    public Toggle triangleToggle;
-    public InputField minLifeInput;
-    public InputField maxLifeInput;
-    public InputField minCooldownInput;
-    public InputField maxCooldownInput;
-
+    [SerializeField] private GameObject _field;
+    [SerializeField] private GameObject _circlePrefab;
+    [SerializeField] private GameObject _squarePrefab;
+    [SerializeField] private GameObject _trianglePrefab;
+    [SerializeField] private Toggle _circleToggle;
+    [SerializeField] private Toggle _squareToggle;
+    [SerializeField] private Toggle _triangleToggle;
+    [SerializeField] private InputField _minLifeInput;
+    [SerializeField] private InputField _maxLifeInput;
+    [SerializeField] private InputField _minCooldownInput;
+    [SerializeField] private InputField _maxCooldownInput;
     [SerializeField] private List<Shape.ShapeType> availableShapes = new List<Shape.ShapeType>();
     private float minLifeTime;
     private float maxLifeTime;
@@ -46,34 +45,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetMinLifeTime(string value)
+    public void SetMinLifeTime()
     {
-        float.TryParse(value, out minLifeTime);
+        float.TryParse(_minLifeInput.text, out minLifeTime);
     }
 
-    public void SetMaxLifeTime(string value)
+    public void SetMaxLifeTime()
     {
-        float.TryParse(value, out maxLifeTime);
+        float.TryParse(_maxLifeInput.text, out maxLifeTime);
     }
 
-    public void SetMinCooldown(string value)
+    public void SetMinCooldown()
     {
-        float.TryParse(value, out minCooldown);
+        float.TryParse(_minCooldownInput.text, out minCooldown);
     }
 
-    public void SetMaxCooldown(string value)
+    public void SetMaxCooldown()
     {
-        float.TryParse(value, out maxCooldown);
+        float.TryParse(_maxCooldownInput.text, out maxCooldown);
     }
 
     private void CreateShape()
     {
-
+        Debug.Log(minLifeTime.ToString() + " " + maxLifeTime.ToString() );
         float life = Random.Range(minLifeTime, maxLifeTime);
-        float x = Random.Range(-field.transform.localScale.x / 800, field.transform.localScale.x / 800);
-        float y = Random.Range(-field.transform.localScale.y / 800, field.transform.localScale.y / 800);
+        float x = Random.Range(-_field.transform.localScale.x / 800, _field.transform.localScale.x / 800);
+        float y = Random.Range(-_field.transform.localScale.y / 800, _field.transform.localScale.y / 800);
   
-        GameObject shapeObject = Instantiate(GetRandomFigurePrefab(), field.transform);
+        GameObject shapeObject = Instantiate(GetRandomFigurePrefab(), _field.transform);
         shapeObject.transform.localPosition = new Vector3(x, y, 0);
         Shape shape = shapeObject.GetComponent<Shape>();
         shape.InitializeFigure(life, new Vector2(x, y));
@@ -85,23 +84,23 @@ public class GameManager : MonoBehaviour
         switch (type)
         {
             case Shape.ShapeType.Circle:
-                if (!circleToggle.isOn)
+                if (!_circleToggle.isOn)
                 {
                     return null;
                 }
-                return circlePrefab;
+                return _circlePrefab;
             case Shape.ShapeType.Square:
-                if (!squareToggle.isOn)
+                if (!_squareToggle.isOn)
                 {
                     return null;
                 }
-                return squarePrefab;
+                return _squarePrefab;
             case Shape.ShapeType.Triangle:
-                if (!triangleToggle.isOn)
+                if (!_triangleToggle.isOn)
                 {
                     return null;
                 }
-                return trianglePrefab;
+                return _trianglePrefab;
             default:
                 return null;
         }

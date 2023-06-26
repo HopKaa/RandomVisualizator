@@ -9,7 +9,7 @@ public class Shape : MonoBehaviour
     [SerializeField] private Font _timerFont;
     [SerializeField] private Text _timerText;
     public enum ShapeType { Circle, Square, Triangle };
-    public ShapeType _shapeType;
+    public ShapeType shapeType;
     
     private float _lifeTime;
     private float _timer;

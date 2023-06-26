@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3dd7735f21c564183d6af424fdd548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerFont: {fileID: 12800000, guid: a3e0cf575723d914aabae7b427cd2e91, type: 3}
-  timerText: {fileID: 5072789400713808599}
+  _timerFont: {fileID: 12800000, guid: a3e0cf575723d914aabae7b427cd2e91, type: 3}
+  _timerText: {fileID: 5072789400713808599}
   shapeType: 2
 --- !u!1 &2533433183122675637
 GameObject:

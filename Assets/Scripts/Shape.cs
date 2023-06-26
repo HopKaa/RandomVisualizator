@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class Shape : MonoBehaviour
 {
-    [SerializeField] private Font timerFont;
-    [SerializeField] private Text timerText;
+    [SerializeField] private Font _timerFont;
+    [SerializeField] private Text _timerText;
     public enum ShapeType { Circle, Square, Triangle };
-    public ShapeType shapeType;
+    public ShapeType _shapeType;
     
-    private float lifeTime;
-    private float timer;
+    private float _lifeTime;
+    private float _timer;
     //private Text timerText;
 
     void Start()
@@ -29,17 +29,17 @@ public class Shape : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        _timer -= Time.deltaTime;
+        if (_timer < 0)
         {
             Destroy(gameObject);
         }
-        timerText.text = timer.ToString("F1");
+        _timerText.text = _timer.ToString("F1");
     }
 
     public void InitializeFigure(float life, Vector2 position)
     {
-        lifeTime = life;
-        timer = lifeTime;
+        _lifeTime = life;
+        _timer = _lifeTime;
     }
 }

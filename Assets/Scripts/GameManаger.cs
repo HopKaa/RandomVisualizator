@@ -17,58 +17,58 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputField _minCooldownInput;
     [SerializeField] private InputField _maxCooldownInput;
     [SerializeField] private List<Shape.ShapeType> availableShapes = new List<Shape.ShapeType>();
-    private float minLifeTime;
-    private float maxLifeTime;
-    private float minCooldown;
-    private float maxCooldown;
-    private float cooldownTimer;
+    private float _minLifeTime;
+    private float _maxLifeTime;
+    private float _minCooldown;
+    private float _maxCooldown;
+    private float _cooldownTimer;
 
     void Start()
     {
         availableShapes.Add(Shape.ShapeType.Square);
         availableShapes.Add(Shape.ShapeType.Circle);
         availableShapes.Add(Shape.ShapeType.Triangle);
-        minLifeTime = 0;
-        maxLifeTime = 0;
-        minCooldown = 0.5f;
-        maxCooldown = 2;
-        cooldownTimer = 0;
+        _minLifeTime = 0;
+        _maxLifeTime = 0;
+        _minCooldown = 0.5f;
+        _maxCooldown = 2;
+        _cooldownTimer = 0;
     }
 
     void Update()
     {
-        cooldownTimer -= Time.deltaTime;
-        if (cooldownTimer < 0)
+        _cooldownTimer -= Time.deltaTime;
+        if (_cooldownTimer < 0)
         {
             CreateShape();
-            cooldownTimer = Random.Range(minCooldown, maxCooldown);
+            _cooldownTimer = Random.Range(_minCooldown, _maxCooldown);
         }
     }
 
     public void SetMinLifeTime()
     {
-        float.TryParse(_minLifeInput.text, out minLifeTime);
+        float.TryParse(_minLifeInput.text, out _minLifeTime);
     }
 
     public void SetMaxLifeTime()
     {
-        float.TryParse(_maxLifeInput.text, out maxLifeTime);
+        float.TryParse(_maxLifeInput.text, out _maxLifeTime);
     }
 
     public void SetMinCooldown()
     {
-        float.TryParse(_minCooldownInput.text, out minCooldown);
+        float.TryParse(_minCooldownInput.text, out _minCooldown);
     }
 
     public void SetMaxCooldown()
     {
-        float.TryParse(_maxCooldownInput.text, out maxCooldown);
+        float.TryParse(_maxCooldownInput.text, out _maxCooldown);
     }
 
     private void CreateShape()
     {
-        Debug.Log(minLifeTime.ToString() + " " + maxLifeTime.ToString() );
-        float life = Random.Range(minLifeTime, maxLifeTime);
+        Debug.Log(_minLifeTime.ToString() + " " + _maxLifeTime.ToString() );
+        float life = Random.Range(_minLifeTime, _maxLifeTime);
         float x = Random.Range(-_field.transform.localScale.x / 800, _field.transform.localScale.x / 800);
         float y = Random.Range(-_field.transform.localScale.y / 800, _field.transform.localScale.y / 800);
   

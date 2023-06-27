@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,32 +15,33 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputField _maxLifeInput;
     [SerializeField] private InputField _minCooldownInput;
     [SerializeField] private InputField _maxCooldownInput;
-    [SerializeField] private List<Shape.ShapeType> availableShapes = new List<Shape.ShapeType>();
+    [SerializeField] private List<ShapeSettings> _availableShapes = new ();
     private float _minLifeTime;
     private float _maxLifeTime;
     private float _minCooldown;
     private float _maxCooldown;
     private float _cooldownTimer;
+    private const int FieldWidth = 800;
+    private const int FieldHight = 800;
 
-    void Start()
+    private void Start()
     {
-        availableShapes.Add(Shape.ShapeType.Square);
-        availableShapes.Add(Shape.ShapeType.Circle);
-        availableShapes.Add(Shape.ShapeType.Triangle);
-        _minLifeTime = 0;
-        _maxLifeTime = 0;
-        _minCooldown = 0.5f;
+        _availableShapes.Add(new ShapeSettings(_squareToggle, _squarePrefab));
+        _availableShapes.Add(new ShapeSettings(_circleToggle, _circlePrefab));
+        _availableShapes.Add(new ShapeSettings(_triangleToggle, _squarePrefab));
+        _minLifeTime = 1;
+        _maxLifeTime = 2;
+        _minCooldown = 1;
         _maxCooldown = 2;
-        _cooldownTimer = 0;
     }
 
-    void Update()
+    private void Update()
     {
         _cooldownTimer -= Time.deltaTime;
-        if (_cooldownTimer < 0)
+        if (_cooldownTimer <= 0)
         {
             CreateShape();
-            _cooldownTimer = Random.Range(_minCooldown, _maxCooldown);
+            _cooldownTimer += Random.Range(_minCooldown, _maxCooldown);
         }
     }
 
@@ -68,41 +68,19 @@ public class GameManager : MonoBehaviour
     private void CreateShape()
     {
         Debug.Log(_minLifeTime.ToString() + " " + _maxLifeTime.ToString() );
+
         float life = Random.Range(_minLifeTime, _maxLifeTime);
-        float x = Random.Range(-_field.transform.localScale.x / 800, _field.transform.localScale.x / 800);
-        float y = Random.Range(-_field.transform.localScale.y / 800, _field.transform.localScale.y / 800);
+        float x = Random.Range(-_field.transform.localScale.x / FieldWidth, _field.transform.localScale.x / FieldWidth);
+        float y = Random.Range(-_field.transform.localScale.y / FieldHight, _field.transform.localScale.y / FieldHight);
   
         GameObject shapeObject = Instantiate(GetRandomFigurePrefab(), _field.transform);
-        shapeObject.transform.localPosition = new Vector3(x, y, 0);
         Shape shape = shapeObject.GetComponent<Shape>();
-        shape.InitializeFigure(life, new Vector2(x, y));
+        shape.InitializeFigure(life, new Vector3(x, y, 0));
     }
     private GameObject GetRandomFigurePrefab()
     {
-        Shape.ShapeType type = availableShapes[Random.Range(0, availableShapes.Count)];
+        ShapeSettings settings = _availableShapes[Random.Range(0, _availableShapes.Count)];
 
-        switch (type)
-        {
-            case Shape.ShapeType.Circle:
-                if (!_circleToggle.isOn)
-                {
-                    return null;
-                }
-                return _circlePrefab;
-            case Shape.ShapeType.Square:
-                if (!_squareToggle.isOn)
-                {
-                    return null;
-                }
-                return _squarePrefab;
-            case Shape.ShapeType.Triangle:
-                if (!_triangleToggle.isOn)
-                {
-                    return null;
-                }
-                return _trianglePrefab;
-            default:
-                return null;
-        }
+        return settings.Prefab;
     }
 }

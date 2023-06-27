@@ -419,13 +419,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 226716571}
   m_TextComponent: {fileID: 1554057225}
   m_Placeholder: {fileID: 1874605764}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -590,13 +590,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 292834124}
   m_TextComponent: {fileID: 1984412390}
   m_Placeholder: {fileID: 1593139540}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -925,13 +925,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 645149032}
   m_TextComponent: {fileID: 2084947493}
   m_Placeholder: {fileID: 686819486}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -1122,7 +1122,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Min Life Time
+  m_Text: 1
 --- !u!222 &686819487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1441,7 +1441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Max Spawn Delay
+  m_Text: 2
 --- !u!222 &833117168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1615,13 +1615,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1029071930}
   m_TextComponent: {fileID: 1929716005}
   m_Placeholder: {fileID: 833117167}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -2214,7 +2214,6 @@ MonoBehaviour:
   _maxLifeInput: {fileID: 226716573}
   _minCooldownInput: {fileID: 292834126}
   _maxCooldownInput: {fileID: 1029071928}
-  availableShapes: 
 --- !u!1 &1554057223
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Min Spawn Delay
+  m_Text: 1
 --- !u!222 &1593139541
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2839,7 +2838,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Max Life Time
+  m_Text: 2
 --- !u!222 &1874605765
 CanvasRenderer:
   m_ObjectHideFlags: 0
